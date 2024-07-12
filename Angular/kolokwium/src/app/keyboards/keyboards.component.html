@@ -1,0 +1,24 @@
+<ng-container *ngIf="!isTableView">
+    <div *ngFor="let s of data" (click)="choosedKeyboard = s" class="selectable">
+        {{s | json}}
+    </div>
+</ng-container>
+
+<table *ngIf="isTableView" [border]="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Typ</th>
+            <th>Usun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr 
+            *ngFor="let s of data" 
+            [app-keyboard-row]="s"
+            (choosed)="onChoosedRow($event)"
+           >
+        </tr>
+    </tbody>
+</table>
